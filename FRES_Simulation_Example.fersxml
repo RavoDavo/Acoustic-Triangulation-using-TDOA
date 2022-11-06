@@ -1,0 +1,199 @@
+<!--Simulation input file. Acoustic Triangulation 4 Recievers-->
+                
+    <!--Define General System Parameters-->
+    
+    <parameters>
+      <starttime>0.0 </starttime>
+      <endtime>20.0</endtime>
+      <c>343</c>     <!--Speed of Sound-->
+      <rate>48000</rate>    <!--Simulation Sample Rate-->
+      <export csv="false" binary="true" csvbinary="true"/>
+      <!--<adc_bits>24</adc_bits>-->
+    </parameters>
+    
+    
+    <!--Define Signals-->
+
+    <pulse name="chirp" type="file" filename="../../../../chirp_1000_1500.h5">
+     <power>10</power>
+     <carrier>1250</carrier> <!-- VHF Band -->
+    </pulse>
+
+    <pulse name="noise1" type="file" filename="../../../../chirp_1000_1500.h5">
+     <power>10</power>
+     <carrier>1250</carrier> <!-- VHF Band -->
+    </pulse>
+
+    <!--Define Clocks-->
+
+
+    <timing name="clock">
+    <frequency>14400</frequency>
+
+    </timing>
+
+    <timing name="clock1">
+    <frequency>44100</frequency>
+    <random_freq_offset> 0.1</random_freq_offset>
+    <random_phase_offset>0.1</random_phase_offset>
+    </timing>
+
+    <timing name="clock2">
+    <frequency>44100</frequency>
+    <random_freq_offset> 0.1</random_freq_offset>
+    <random_phase_offset>0.1</random_phase_offset>
+    </timing>
+
+    <timing name="clock3">
+    <frequency>44100</frequency>
+    <random_freq_offset> 0.1</random_freq_offset>
+    <random_phase_offset>0.1</random_phase_offset>
+    </timing>
+
+    <timing name="clock4">
+    <frequency>44100</frequency>
+    <random_freq_offset> 0.1</random_freq_offset>
+    <random_phase_offset>0.1</random_phase_offset>
+    </timing>
+
+
+
+    <!--Define Transmitters and Receivers -->
+    <antenna name="isotropic" pattern="isotropic">
+    </antenna>
+
+    <platform name="Transmitter">
+     <motionpath>
+      <positionwaypoint>
+      
+       <x>0.7</x>
+       <y>1.2</y>
+       <altitude>0</altitude>
+       <time>0</time>
+      </positionwaypoint>
+     </motionpath>
+     <fixedrotation>
+      <startazimuth>0.0</startazimuth>
+      <startelevation>0</startelevation>
+      <azimuthrate>0</azimuthrate>
+      <elevationrate>0</elevationrate>
+     </fixedrotation>
+     <transmitter name="Tx_chirp" type="pulsed" antenna="isotropic" pulse="chirp" timing="clock">      
+      <prf>0.1</prf> <!-- make this 0.1 for a 10s simulation-->
+     </transmitter>
+    </platform>
+
+    <platform name="Transmitter">
+     <motionpath>
+      <positionwaypoint>
+       <x>1.14</x>
+       <y>2.055</y>
+       <altitude>0</altitude>
+       <time>0</time>
+      </positionwaypoint>
+     </motionpath>
+     <fixedrotation>
+      <startazimuth>0.0</startazimuth>
+      <startelevation>0</startelevation>
+      <azimuthrate>0</azimuthrate>
+      <elevationrate>0</elevationrate>
+     </fixedrotation>
+     <transmitter name="Tx_noise1" type="pulsed" antenna="isotropic" pulse="noise1" timing="clock">      
+      <prf>0.1</prf> <!-- make this 0.1 for a 10s simulation-->
+     </transmitter>
+    </platform>
+
+
+
+    <platform name="Mic1_Rx">
+     <motionpath>
+      <positionwaypoint>
+       <x>0</x>
+       <y>0</y>
+       <altitude>0.0</altitude>
+       <time>0</time>
+      </positionwaypoint>
+     </motionpath>
+     <fixedrotation>
+      <startazimuth>0</startazimuth>
+      <startelevation>0</startelevation>
+      <azimuthrate>0</azimuthrate>
+      <elevationrate>0</elevationrate>
+     </fixedrotation>
+     <receiver name="Mic1" type="pulsed" antenna="isotropic"  timing="clock1">      
+      <window_skip>0</window_skip>
+      <window_length>10</window_length> <!-- make this 10 for a 10s simulation--> 
+      <prf>0.1</prf> <!-- make this 0.1 for a 10s simulation-->
+      <noise_temp>0</noise_temp>
+     </receiver>
+    </platform>
+
+    <platform name="Mic2_Rx">
+     <motionpath>
+      <positionwaypoint>
+       <x>0</x>
+       <y>3</y>
+       <altitude>0.0</altitude>
+       <time>0</time>
+      </positionwaypoint>
+     </motionpath>
+     <fixedrotation>
+      <startazimuth>0</startazimuth>
+      <startelevation>0</startelevation>
+      <azimuthrate>0</azimuthrate>
+      <elevationrate>0</elevationrate>
+     </fixedrotation>
+     <receiver name="Mic2" type="pulsed" antenna="isotropic"  timing="clock2">      
+      <window_skip>0</window_skip>
+      <window_length>10</window_length> <!-- make this 10 for a 10s simulation--> 
+      <prf>0.1</prf> <!-- make this 0.1 for a 10s simulation-->
+      <noise_temp>0</noise_temp>
+     </receiver>
+    </platform>
+
+    <platform name="Mic3_Rx">
+     <motionpath>
+      <positionwaypoint>
+       <x>3</x>
+       <y>0</y>
+       <altitude>0.0</altitude>
+       <time>0</time>
+      </positionwaypoint>
+     </motionpath>
+     <fixedrotation>
+      <startazimuth>0</startazimuth>
+      <startelevation>0</startelevation>
+      <azimuthrate>0</azimuthrate>
+      <elevationrate>0</elevationrate>
+     </fixedrotation>
+     <receiver name="Mic3" type="pulsed" antenna="isotropic" timing="clock3">      
+      <window_skip>0</window_skip>
+      <window_length>10</window_length> <!-- make this 10 for a 10s simulation--> 
+      <prf>0.1</prf> <!-- make this 0.1 for a 10s simulation-->
+      <noise_temp>0</noise_temp>
+     </receiver>
+    </platform>
+
+    <platform name="Mic4_Rx">
+     <motionpath>
+      <positionwaypoint>
+       <x>3</x>
+       <y>3</y>
+       <altitude>0.0</altitude>
+       <time>0</time>
+      </positionwaypoint>
+     </motionpath>
+     <fixedrotation>
+      <startazimuth>0</startazimuth>
+      <startelevation>0</startelevation>
+      <azimuthrate>0</azimuthrate>
+      <elevationrate>0</elevationrate>
+     </fixedrotation>
+     <receiver name="Mic4" type="pulsed" antenna="isotropic" timing="clock4">      
+      <window_skip>0</window_skip>
+      <window_length>10</window_length> <!-- make this 10 for a 10s simulation--> 
+      <prf>0.1</prf> <!-- make this 0.1 for a 10s simulation-->
+      <noise_temp>0</noise_temp>
+     </receiver>
+    </platform>
+    </simulation>
