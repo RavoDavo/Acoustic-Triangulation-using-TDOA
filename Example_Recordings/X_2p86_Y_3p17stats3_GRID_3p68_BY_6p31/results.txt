@@ -1,0 +1,47 @@
+Grid: 6.340000 by 3.720000 (X by Y)
+
+Calibration Position X:3.170000 Y:1.860000
+
+Sound Source	 X:3.170000 Y:2.860000
+
+T0 is the ideal TOA of calibration sound (Time of flight from calibration point to microphone) 
+T0 mic1: 0.010653s
+T0 mic2: 0.010653s
+T0 mic3: 0.010653s
+T0 mic4: 0.010653s
+
+T1 = Time of arrival of calibration sound
+T1 mic1: 1.706604s
+T1 mic2: 1.472813s
+T1 mic3: 2.121062s
+T1 mic4: 0.785438s
+
+Tcal = T1 - T0 
+Tcal mic1: 1.706604s
+Tcal mic2: 1.472813s
+Tcal mic3: 2.121062s
+Tcal mic4: 0.785438s
+
+Time of arrival of the sound of interest before calibration shift
+Tsnd mic1: 7.770688s
+Tsnd mic2: 7.537937s
+Tsnd mic3: 8.182229s
+Tsnd mic4: 6.847083s
+
+Relative Time of arrival of the sound of interest after calibration shift
+Tsnd mic1: 6.074737s
+Tsnd mic2: 6.075778s
+Tsnd mic3: 6.071820s
+Tsnd mic4: 6.072299s
+
+Time difference of arrival for measured vs ideal between different microphones (ideal found with prior knowledge of sound source)
+Measured TDOA 21: 0.001042s		IDEAL TDOA21:0.000000		error in TDOA: 0.001042s
+Measured TDOA 31: -0.002917s		IDEAL TDOA31:-0.002871		error in TDOA: 0.000045s
+Measured TDOA 41: -0.002438s		IDEAL TDOA41:-0.002871		error in TDOA: 0.000434s
+
+Estimated Position:  X = 3.080000  Y = 2.860000
+Sound Source:        X = 3.170000  Y = 2.860000
+Offset:              X = 0.090000m Y = 0.000000m
+
+Error = 0.090000m
+
